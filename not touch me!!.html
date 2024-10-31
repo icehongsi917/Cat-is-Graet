@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stray cat that was wandering around.</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            text-align: center;
+            color: pink;
+        }
+        img {
+            cursor: grab;
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <img src="om.jpg" alt="Image 1" id="image">
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var image = document.getElementById("image");
+            var images = ["om.jpg", "ah.jpg"];
+            var clickCount = 0;
+
+            image.addEventListener("click", function() {
+                // 클릭 시 소리 재생
+                playSound();
+
+                clickCount++;
+
+                if (clickCount < 5) {
+                    var currentIndex = images.indexOf(image.src.split("/").pop());
+                    var nextIndex = (currentIndex + 1) % images.length;
+                    image.src = images[nextIndex];
+
+                    // 300ms 후 원래 이미지로 돌아가기
+                    setTimeout(function() {
+                        image.src = images[0];
+                    }, 300);
+                } else if (clickCount === 5) {
+                    window.location.href = "wating.html";
+                }
+            });
+        });
+
+        function playSound() {
+            var audio = document.getElementById("clickSound");
+            audio.currentTime = 0; // 소리 재생 시작 시점 초기화
+            audio.play();
+        }
+    </script>
+
+    <audio id="clickSound">
+        <source src="울음.mp3" type="audio/mpeg">
+        <source src="울음.ogg" type="audio/ogg">
+        Your browser does not support the audio element.
+    </audio>
+    <h1>don't touch me!!</h1>
+</body>
+</html>

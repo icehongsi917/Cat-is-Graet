@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Look It's Button</title>
+    <style>
+        * {
+            text-align: center;
+            font-size: 180%;
+            border-radius: 30px;
+            cursor: pointer;
+            color: plum;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+        #sound-btn {
+            padding: 10px 20px;
+            font-size: 190px;
+            cursor: pointer;
+            background-color: black;
+        }
+        button:hover {
+            background-color: rgb(255, 164, 232);
+            color: rgb(255, 67, 67);
+        }
+        .random-text {
+            position: absolute;
+            font-size: 24px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button id="sound-btn">Look It's Button</button>
+    <audio id="click-sound" src="클릭.mp3"></audio>
+
+    <script>
+        let clickCount = 0;
+
+        const phrases = [
+            "Cats are the best!",
+            "I love my cat!",
+            "Feline friends are wonderful!",
+            "Cats bring joy!",
+            "Worship the feline!",
+        ];
+
+        document.getElementById('sound-btn').addEventListener('click', function() {
+            // 소리 재생
+            playSound();
+
+            clickCount++;
+
+            if (clickCount >= 100) {
+                window.location.href = 'donut cat.html';
+            }
+
+            // 랜덤 문구 표시
+            showRandomText();
+        });
+
+        const soundButton = document.getElementById('sound-btn');
+        const clickSound = document.getElementById('click-sound');
+
+        function playSound() {
+            clickSound.currentTime = 0; // 소리 재생 시작 시점 초기화
+            clickSound.play();
+        }
+
+        function showRandomText() {
+            const randomIndex = Math.floor(Math.random() * phrases.length);
+            const textElement = document.createElement("div");
+            textElement.innerText = phrases[randomIndex];
+            textElement.className = "random-text";
+            document.body.appendChild(textElement);
+
+            // 랜덤 위치 계산
+            const x = Math.random() * (window.innerWidth - 200);
+            const y = Math.random() * (window.innerHeight - 50);
+            textElement.style.left = `${x}px`;
+            textElement.style.top = `${y}px`;
+            textElement.style.display = "block";
+
+            // 2초 후에 텍스트를 사라지게 함
+            setTimeout(() => {
+                textElement.style.display = "none";
+                document.body.removeChild(textElement);
+            }, 2000);
+
+            // 버튼 텍스트 변경
+            /*const originalText = soundButton.innerText;
+            soundButton.innerText = "Meaw!";
+            setTimeout(() => {
+                soundButton.innerText = originalText;
+            }, 100); // 300ms 후 원래 텍스트로 돌아가기*/
+        }
+    </script>
+</body>
+</html>

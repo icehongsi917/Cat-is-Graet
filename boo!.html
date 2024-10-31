@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Do not touch stray cats.</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: url('길가.gif');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .container {
+      position: relative;
+      overflow: hidden;
+      width: 500px;
+      height: 400px;
+      cursor: pointer;
+      margin-top: 530px; /* 컨테이너를 아래로 이동 */
+    }
+
+    img {
+      position: absolute;
+      top: 0;
+      left: -100%;
+      transition: left 1s ease;
+
+      cursor: grab;
+    }
+
+    .container:hover img {
+      margin-top: 20px;
+      left: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container" onclick="window.location='not touch me!!.html';">
+    <img src="픽셀캣.gif" alt="hom Image" onmouseover="playSound()">
+  </div>
+  <audio id="soundEffect" src="울음.mp3" preload="auto"></audio>
+
+  <script>
+    function playSound() {
+      var audio = document.getElementById('soundEffect');
+      audio.play();
+    }
+  </script>
+
+</body>
+</html>

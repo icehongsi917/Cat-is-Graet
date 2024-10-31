@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Worship</title>
+    <style>
+        * {
+            text-align: center;
+            margin: 0 auto;
+            padding: 0;
+
+
+        }
+
+        .container {
+            width: 100%;
+            height: 1200px;
+
+            color: white;
+        }
+
+        h1 {
+            background-color: burlywood;
+            color: white;
+            text-align: center;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+        li {
+            background-color: black;
+            color: red;
+            text-align: center;
+        }
+
+        ul {
+            background-color: black;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        body {
+            background-image: url('cat.gif');
+            background-size: cover;
+        }
+
+        .colorful-button {
+            padding: 20px 30px;
+            background-color: black;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 32px;
+
+            margin: 20px;
+        }
+
+        .colorful-button span {
+            display: inline-block;
+        }
+
+        .colorful-button span:nth-child(1) {
+            color: red;
+        }
+
+        .colorful-button span:nth-child(2) {
+            color: green;
+        }
+
+        .colorful-button span:nth-child(2) {
+            color: blue;
+        }
+
+
+
+        .bgImg {
+            background-image: url('cat.gif');
+            width: 100%;
+            height: 4000px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="bgImg">
+            <h1>Worship the Cat!!!</h1>
+            <hr>
+            <p>This is a worship site created on March 22, 2024. <br> A site dedicated to the admiration of Korean cats.
+            </p>
+            <p>If you dislike cats, please leave.</p>
+
+            <h2>Cats Are</h2>
+            <h2>Adorable</h2>
+
+            <hr>
+            <h1>This is a perfectly normal site!!!</h1>
+            <hr>
+            <h2>It’s not scary!!!</h2>
+            <p>If you don’t pet a cat, it will be sad! <br> Cats love treats.</p>
+
+            <h1>!!Caution!!</h1>
+            <hr>
+            <ul>
+                <li><b>Touching a cat without permission is just like hitting it!!!</b> (Do not pet it until it allows
+                    you!)</li>
+                <li><b>Do not steal a cat's treats!!!</b> (I secretly ate one once and got a jelly punch two times!)
+                </li>
+                <li><b>In Cat City, there’s a character named Cat, so do not sneak away with the can opener!!!</b> (It
+                    looks suspicious if you do...)</li>
+            </ul>
+
+            <h3>If you break these rules...</h3>
+            <h2>You will end up worshiping a Pug!!!!!</h2>
+
+
+            <a href="boo!.html"><img src="고양이.png" alt="" width="400px" height="400px"></a>
+
+
+
+
+            <h1>exorbitant!!!</h1>
+            <button class="colorful-button" onclick="changeColor()" id="redirect-btn">your
+                    Take A Look!</button>
+            <script>
+                function changeColor() {
+                    var button = document.querySelector('.colorful-button');
+                    var text = button.textContent.trim();
+                    button.innerHTML = '';
+
+                    for (var i = 0; i < text.length; i++) {
+                        var span = document.createElement('span');
+                        span.textContent = text[i];
+                        button.appendChild(span);
+                    }
+
+                    var spans = button.querySelectorAll('span');
+                    spans.forEach(function (span, index) {
+                        span.style.color = getRandomColor();
+                    });
+                }
+
+                function getRandomColor() {
+                    var letters = '0123456789ABCDEF';
+                    var color = '#';
+                    for (var i = 0; i < 6; i++) {
+                        color += letters[Math.floor(Math.random() * 16)];
+                    }
+                    return color;
+                }
+
+
+                document.getElementById('redirect-btn').addEventListener('click', function () {
+                    // 5초 후에 다른 사이트로 이동
+                    setTimeout(() => {
+                        window.location.href = 'cat button.html'; // 이동할 사이트의 URL로 변경
+                    }, 3000);
+                });
+
+            </script>
+        </div>
+
+        <audio autoplay loop>
+            <source src="냥캣.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+
+
+
+</body>
+
+</html>
